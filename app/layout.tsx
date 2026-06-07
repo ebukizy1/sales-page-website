@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "Lovable App",
@@ -20,10 +19,8 @@ export default function RootLayout({
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap"
         />
-        {/* Meta Pixel Code */}
-        <Script
-          id="meta-pixel-init"
-          strategy="beforeInteractive"
+        {/* Meta Pixel Code - Exact from Meta */}
+        <script
           dangerouslySetInnerHTML={{
             __html: `
               !function(f,b,e,v,n,t,s)
@@ -48,6 +45,7 @@ export default function RootLayout({
             alt=""
           />
         </noscript>
+        {/* End Meta Pixel Code */}
       </head>
       <body className="bg-slate-950 text-slate-100 min-h-screen">
         {children}
