@@ -32,6 +32,18 @@ function ThankYouContent() {
   const img2 = searchParams.get("img2") || "";
   const img3 = searchParams.get("img3") || "";
 
+  // Track Purchase event on thank you page load
+  useEffect(() => {
+    if (pkgTitle && pkgPrice) {
+      trackMetaEvent("Purchase", {
+        content_name: pkgTitle,
+        value: parseInt(pkgPrice),
+        currency: "NGN",
+        num_items: parseInt(pkgQty) || 1,
+      });
+    }
+  }, [pkgTitle, pkgPrice, pkgQty]);
+
   // Build WhatsApp message
   const whatsappMsg = [
     "Hello, I just placed an order on your store:",

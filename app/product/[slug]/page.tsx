@@ -15,6 +15,7 @@ import {
   type GalleryImage
 } from "@/lib/cms-types";
 import { ArrowLeft } from "lucide-react";
+import { trackMetaEvent } from "@/lib/meta-pixel";
 
 export const dynamic = "force-dynamic";
 
@@ -32,6 +33,20 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
   } | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  // Track ViewContent when product is loaded
+  useEffect(() => {
+    if (data && data.product) {
+      const unitPrice = data.product.price || (data.packages[0] ? Math.round(data.packages[0].price / data.packages[0].quantity) : 0);
+      trackMetaEvent("ViewContent", {
+        content_ids: [data.product.id],
+        content_name: data.product.title,
+        content_type: "product",
+        value: unitPrice,
+        currency: "NGN",
+      });
+    }
+  }, [data]);
 
   useEffect(() => {
     async function fetchProduct() {
