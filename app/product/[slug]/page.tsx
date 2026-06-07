@@ -104,9 +104,6 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
     return (
       <div className="min-h-screen bg-slate-950 text-white p-6">
         <div className="max-w-6xl mx-auto">
-          <Link href="/" className="flex items-center gap-2 text-emerald-400 font-bold hover:text-emerald-300 mb-8">
-            <ArrowLeft className="h-5 w-5" /> Back to Home
-          </Link>
           <div className="text-center">
             <h2 className="text-2xl font-black text-emerald-500 mb-4">Error</h2>
             <p className="text-slate-300 mb-6">{error}</p>
@@ -121,13 +118,7 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
 
   return (
     <div className="min-h-screen bg-slate-950">
-      <header className="border-b border-slate-800 bg-slate-900/50 backdrop-blur">
-        <div className="mx-auto max-w-6xl px-4 py-4">
-          <Link href="/" className="flex items-center gap-2 text-emerald-400 font-bold hover:text-emerald-300">
-            <ArrowLeft className="h-5 w-5" /> Back to Home
-          </Link>
-        </div>
-      </header>
+
       <ProductSalesFunnel {...data} />
     </div>
   );

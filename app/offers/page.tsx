@@ -49,8 +49,7 @@ export default function OffersPage() {
   return (
     <main className="min-h-screen bg-slate-950 text-slate-100">
       <header className="border-b border-slate-800 bg-slate-900">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
-          <Link href="/" onClick={() => trackMetaEvent("ClickLink", { destination: "Home from Offers" })} className="text-sm font-bold text-emerald-400">← Back to Home</Link>
+        <div className="mx-auto flex max-w-6xl items-center justify-end px-4 py-4">
           <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">All Active Offers</p>
         </div>
       </header>
